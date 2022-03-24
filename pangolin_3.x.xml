@@ -11,12 +11,16 @@
     <command>
 <![CDATA[
     pangolin $query --min-length $minlength --max-ambig $maxambig --threads $threads --alignment
+	#if $usher
+      --usher --tempdir .
+    #end if
 ]]>
     </command>
     <inputs>
         <param name="query" format="fasta" type="data" label="Query fasta file of sequences to analyse" />
         <param name="minlength" argument="--min-length" type="integer" value="10000" label="Minimum query length allowed for pangolin to attempt assignment"/>
         <param name="maxambig" argument="--max-ambig" type="float" min="0" max="1" value="0.5" label="Maximum proportion of Ns allowed for pangolin to attempt assignment"/>
+		<param name="usher" type="boolean" truevalue="true" falsevalue="false" checked="False" label="Do you want to to use Usher" />
         <param name="threads" argument="--threads" type="integer" value="1" label="Number of threads"/>
     </inputs>
 
